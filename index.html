@@ -62,8 +62,8 @@
 <button onclick="jump2()">To Shopeepay APP Schema (MY Live)</button>
 
  <br>
-<button onclick="jumpSPUAT()">To Shopee APP ULS (ID UAT)</button>
-<button onclick="jumpSPUAT_UL()">To Shopee APP UL (ID UAT)</button>
+<button onclick="jumpSPTEST()">To Shopee APP ULS (ID TEST)</button>
+<button onclick="jumpSPUAT_UL()">To Shopee APP ULS (ID UAT)</button>
 
  <br>
 <button onclick="jumpSPLive()">To Shopee APP ULS (MY Live)</button>
@@ -129,13 +129,13 @@ function jump2() {
   // location.href = "shopeepayid://main?apprl=%2Frn%2F%40shopee-rn%2Fshopeepay%2FTRANSFER_CREATE_CSCANB%3Ftoken%3DdnFCUjNBdXRaOEx2KLa0HO9ZyY_EJjNdkRDshPsuQlQiSD0wgo4Fd4R39Z0q0_HprQhULjk%26orderSn%3D106698179194317761%26entryRefer%3DJumpApp%26referrer%3Dexternal%26subEntryRefer%3DJumpAppClick%26nav_start_time%3D1767684113708";
 }
 
-function jumpSPUAT(){
+function jumpSPTEST(){
     const url = 'https://test.shopeepay.co.id/u/checkout_id?type=start&mid=10100347&target_app=shopeepay&medium_index=xdbm79ijc1jmc0i9dh350&order_key=YfWVgC9_iw3SWRieX-zRFljnx5x2SU_D4iu9eHYLiT8yhtPS6dVM7uuUO8Cyaj-ksN-YThKLhB0YyQ&order_sn=111303434484037966&return_url=aHR0cHM6Ly9iYWlkdS5jb20%2FYW1vdW50PTUwMDAwMDAmY2xpZW50X2lkPTEwMTAwMzQ3JnJlZmVyZW5jZV9pZD1OZXdTeXN0ZW1fSnVtcEFwcF9jMTIwMTI1JnJlc3VsdF9jb2RlPTIwMyZzaWduYXR1cmU9Vmowd0gwUTBHb0dldE8tbWt5YmNSdnU5aDVHMi1XcHgzWldHaVdtdmNvdyUzRA%3D%3D&source=web&target=2&token=xdbm79ijc1jmc0i9dh350'
       location.href = url;
 }
 
 function jumpSPUAT_UL(){
-    const url = 'https://uat.shopee.com.my/payment/account-linking/agreement'
+    const url = 'https://uat.shopeepay.co.id/u/checkout_id?type=start&mid=10036232&target_app=shopeepay&_apprl_=%2Frn%2F%40shopee-rn%2Fshopeepay%2FTRANSFER_PAYMENT_SELECTION_CSCANB%3F__anim__%3D2%26entryRefer%3DJumpApp%26mid%3D10036232%26order_key%3D3k2k47kS0ttVH2XGwBPeY3iC5quaPoXZ3cSH70SPp4oU_Bq16FHY4cpeOZIggJ--pDQaVuOBMqX7xg%26order_sn%3D166298538657138038%26referrer%3Dexternal%26return_url%3DaHR0cHM6Ly9iYWlkdS5jb20%252FYW1vdW50PTEwMDAmY2xpZW50X2lkPWZzaG1lcmhvc3QmcmVmZXJlbmNlX2lkPUlEVUFUX0p1bXBBcHBfMjAyNjIwMDM5JnJlc3VsdF9jb2RlPTIwMyZzaWduYXR1cmU9U282S2F5RFhuTGNlZENPbm5nZFFFR29XZ1ZJT3FrQ2ZUbHJqUC1JZzZGQSUzRA%253D%253D%26source%3Dweb%26token%3Dxdbm7it7tkkps0gf9cme0&medium_index=xdbm7it7tkkps0gf9cme0&order_key=3k2k47kS0ttVH2XGwBPeY3iC5quaPoXZ3cSH70SPp4oU_Bq16FHY4cpeOZIggJ--pDQaVuOBMqX7xg&order_sn=166298538657138038&return_url=aHR0cHM6Ly9iYWlkdS5jb20%2FYW1vdW50PTEwMDAmY2xpZW50X2lkPWZzaG1lcmhvc3QmcmVmZXJlbmNlX2lkPUlEVUFUX0p1bXBBcHBfMjAyNjIwMDM5JnJlc3VsdF9jb2RlPTIwMyZzaWduYXR1cmU9U282S2F5RFhuTGNlZENPbm5nZFFFR29XZ1ZJT3FrQ2ZUbHJqUC1JZzZGQSUzRA%3D%3D&source=web&token=xdbm7it7tkkps0gf9cme0'
   location.href = url;
 }
 
