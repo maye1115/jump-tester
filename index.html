@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      /* 添加高亮样式 */
+      .highlight {
+        color: red;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-weight: bold;
+      }
+      /* 代码文本样式 */
+      code {
+        font-family: monospace;
+        font-weight: bold;
+        color: #c7254e;
+      }
+      /* 新增输入框样式 */
+      textarea {
+        width: 80%;
+        height: 100px;
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: monospace;
+        resize: vertical;
+      }
+      button {
+        margin: 5px;
+        padding: 8px 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+<body>
+
+<h1>Cross-domain Redirection Demo</h1>
+
+<!-- 新增多行输入框和按钮 -->
+<div>
+  <textarea id="customUrl" placeholder="Please Input URL..."></textarea>
+  <br>
+  <button onclick="jump3()">Input Full Url</button>
+    <button onclick="jumpDev()">Dev Debugger</button>
+
+</div>
+  <br>
+    <br>
+<button onclick="jump1()">To Shopeepay APP ULS (MY UAT)</button>
+<button onclick="jump2()">To Shopeepay APP Schema (MY UAT)</button>
+  <br>
+<button onclick="jumpLive()">To Shopeepay APP ULS (MY Live)</button>
+<button onclick="jump2()">To Shopeepay APP Schema (MY Live)</button>
+
+ <br>
+<button onclick="jumpSPUAT()">To Shopee APP ULS (ID UAT)</button>
+<button onclick="jumpSPUAT_UL()">To Shopee APP UL (ID UAT)</button>
+
+ <br>
+<button onclick="jumpSPLive()">To Shopee APP ULS (MY Live)</button>
+<button onclick="jumpSPLive_UL()">To Shopee APP UL (MY Live)</button>
+ <br>
+  <br>
+
+
+<script>
+
+  function geneJumpLink (token)  {
+    const queryParams = {
+       token,
+       entryRefer: 'JumpApp',
+       referrer: 'external',
+       subEntryRefer: 'JumpAppClick'
+    };
+ 
+    // 过滤掉值为 undefined 的参数
+    const validParams = Object.entries(queryParams)
+        .filter(([_, value]) => value !== undefined)
+        .map(([key, value]) => `${key}=${value}`)
+        .join('&');
+ 
+    const rnPath = `rn/@shopee-rn/shopeepay/TRANSFER_CREATE_CSCANB?${validParams}`;
+     
+    return `shopeepaymy://main?apprl=${encodeURIComponent(rnPath)}`;
+  }
+
+
+function jump1() {
+  const url = 'https://app.uat.shopeepay.com.my/u/pay_checkout?type=start&mid=10100249&target_app=shopeepay&_apprl_=%2Frn%2F%40shopee-rn%2Fshopeepay%2FTRANSFER_PAYMENT_SELECTION_CSCANB%3F__anim__%3D2%26entryRefer%3DJumpApp%26mid%3D10100249%26order_key%3DjyEetu1YFdgpUWv43xcHn1DOUdMfzgzSFPTbSIkmiAZG0hcXbdTOFYaeTaqnrUc5vrfjazh-pRXPbw%26order_sn%3D128558704586991784%26referrer%3Dexternal%26return_url%3DaHR0cHM6Ly9iYWlkdS5jb20%252FYW1vdW50PTExMDAwJmNsaWVudF9pZD1MQV9TWl9URVNUX01lcmNoYW50X0hvc3QmcmVmZXJlbmNlX2lkPU5ld1N5c3RlbV9JRF9KdW1wQXBwMDAxMzM5JnJlc3VsdF9jb2RlPTIwMyZzaWduYXR1cmU9QmdJYUxBbnp4RE5lT2xWanZtT0ZNTVZYVGZZbTZxRU45RXhyV1Q2aWx6OCUzRA%253D%253D%26source%3Dweb%26token%3Dxd5j5mmv1mkjcfgpqqr2g&medium_index=xd5j5mmv1mkjcfgpqqr2g&order_key=jyEetu1YFdgpUWv43xcHn1DOUdMfzgzSFPTbSIkmiAZG0hcXbdTOFYaeTaqnrUc5vrfjazh-pRXPbw&order_sn=128558704586991784&return_url=aHR0cHM6Ly9iYWlkdS5jb20%2FYW1vdW50PTExMDAwJmNsaWVudF9pZD1MQV9TWl9URVNUX01lcmNoYW50X0hvc3QmcmVmZXJlbmNlX2lkPU5ld1N5c3RlbV9JRF9KdW1wQXBwMDAxMzM5JnJlc3VsdF9jb2RlPTIwMyZzaWduYXR1cmU9QmdJYUxBbnp4RE5lT2xWanZtT0ZNTVZYVGZZbTZxRU45RXhyV1Q2aWx6OCUzRA%3D%3D&source=web&target=2&token=xd5j5mmv1mkjcfgpqqr2g'
+  location.href = url;
+}
+
+function jumpDev() {
+   const queryParams = {
+       token: 'xd8clggdq0omsfgvlc0g0',
+       entryRefer: 'JumpApp',
+       referrer: 'external',
+       subEntryRefer: 'JumpAppClick'
+    };
+ 
+    // 过滤掉值为 undefined 的参数
+    const validParams = Object.entries(queryParams)
+        .filter(([_, value]) => value !== undefined)
+        .map(([key, value]) => `${key}=${value}`)
+        .join('&');
+ 
+    const rnPath = `rn/@shopee-rn/shopeepay/TRANSFER_CREATE_CSCANB?${validParams}`;
+  
+  //  location.href =  `shopeepayid://main?apprl=${encodeURIComponent(rnPath)}`;
+location.href =   'https://app.uat.shopeepay.co.id/u/pay_checkout?medium_index=xd9hnhtftkkps0gbdja60'
+}
+
+function jumpLive() {
+  const url = 'https://app.shopeepay.com.my/u/pay_checkout?type=start&mid=10100249&target_app=shopeepay&_apprl_=%2Frn%2F%40shopee-rn%2Fshopeepay%2FTRANSFER_PAYMENT_SELECTION_CSCANB%3F__anim__%3D2%26entryRefer%3DJumpApp%26mid%3D10100249%26order_key%3DjyEetu1YFdgpUWv43xcHn1DOUdMfzgzSFPTbSIkmiAZG0hcXbdTOFYaeTaqnrUc5vrfjazh-pRXPbw%26order_sn%3D128558704586991784%26referrer%3Dexternal%26return_url%3DaHR0cHM6Ly9iYWlkdS5jb20%252FYW1vdW50PTExMDAwJmNsaWVudF9pZD1MQV9TWl9URVNUX01lcmNoYW50X0hvc3QmcmVmZXJlbmNlX2lkPU5ld1N5c3RlbV9JRF9KdW1wQXBwMDAxMzM5JnJlc3VsdF9jb2RlPTIwMyZzaWduYXR1cmU9QmdJYUxBbnp4RE5lT2xWanZtT0ZNTVZYVGZZbTZxRU45RXhyV1Q2aWx6OCUzRA%253D%253D%26source%3Dweb%26token%3Dxd5j5mmv1mkjcfgpqqr2g&medium_index=xd5j5mmv1mkjcfgpqqr2g&order_key=jyEetu1YFdgpUWv43xcHn1DOUdMfzgzSFPTbSIkmiAZG0hcXbdTOFYaeTaqnrUc5vrfjazh-pRXPbw&order_sn=128558704586991784&return_url=aHR0cHM6Ly9iYWlkdS5jb20%2FYW1vdW50PTExMDAwJmNsaWVudF9pZD1MQV9TWl9URVNUX01lcmNoYW50X0hvc3QmcmVmZXJlbmNlX2lkPU5ld1N5c3RlbV9JRF9KdW1wQXBwMDAxMzM5JnJlc3VsdF9jb2RlPTIwMyZzaWduYXR1cmU9QmdJYUxBbnp4RE5lT2xWanZtT0ZNTVZYVGZZbTZxRU45RXhyV1Q2aWx6OCUzRA%3D%3D&source=web&target=2&token=xd5j5mmv1mkjcfgpqqr2g'
+  location.href = url;
+}
+
+function jump2() {
+  location.href = geneJumpLink("xd5j5mmv1mkjcfgpqqr2g")
+  // location.href = "shopeepayid://main?apprl=%2Frn%2F%40shopee-rn%2Fshopeepay%2FTRANSFER_CREATE_CSCANB%3Ftoken%3DdnFCUjNBdXRaOEx2KLa0HO9ZyY_EJjNdkRDshPsuQlQiSD0wgo4Fd4R39Z0q0_HprQhULjk%26orderSn%3D106698179194317761%26entryRefer%3DJumpApp%26referrer%3Dexternal%26subEntryRefer%3DJumpAppClick%26nav_start_time%3D1767684113708";
+}
+
+function jumpSPUAT(){
+    const url = 'https://test.shopeepay.co.id/u/checkout_id?type=start&mid=10100501&target_app=shopeepay&_apprl_=%2Frn%2F%40shopee-rn%2Fshopeepay%2FTRANSFER_PAYMENT_SELECTION_CSCANB%3F__anim__%3D2%26entryRefer%3DJumpApp%26mid%3D10100501%26order_key%3D42_nd3ULGIyBuRcjnq_z6-PVA8d4yVSNHmlX84ggTmFBiLU4kclp0Y2iTHODk2F1S-cV0ZidFbp8Zw%26order_sn%3D111861917238314137%26referrer%3Dexternal%26return_url%3DaHR0cHM6Ly9iYWlkdS5jb20%252FYW1vdW50PTEwMDAmY2xpZW50X2lkPXN6X2ZpcnN0X3Rlc3RfbWVyY2hhbnRfaG9zdCZyZWZlcmVuY2VfaWQ9TmV3U3lzdGVtX0p1bXBBcHBfMjAxMjIwMDkwMyZyZXN1bHRfY29kZT0yMDMmc2lnbmF0dXJlPTBITW16c2pXUllmanVWdl9FMW0zSUV3SHBzZ3p5SklWazl2akhKVDJQNVklM0Q%253D%26source%3Dweb%26token%3Dxdblvjhjc1jmc0jm8vpvg&medium_index=xdblvjhjc1jmc0jm8vpvg&order_key=42_nd3ULGIyBuRcjnq_z6-PVA8d4yVSNHmlX84ggTmFBiLU4kclp0Y2iTHODk2F1S-cV0ZidFbp8Zw&order_sn=111861917238314137&return_url=aHR0cHM6Ly9iYWlkdS5jb20%2FYW1vdW50PTEwMDAmY2xpZW50X2lkPXN6X2ZpcnN0X3Rlc3RfbWVyY2hhbnRfaG9zdCZyZWZlcmVuY2VfaWQ9TmV3U3lzdGVtX0p1bXBBcHBfMjAxMjIwMDkwMyZyZXN1bHRfY29kZT0yMDMmc2lnbmF0dXJlPTBITW16c2pXUllmanVWdl9FMW0zSUV3SHBzZ3p5SklWazl2akhKVDJQNVklM0Q%3D&source=web&target=2&token=xdblvjhjc1jmc0jm8vpvg'
+  location.href = url;
+}
+
+function jumpSPUAT_UL(){
+    const url = 'https://uat.shopee.com.my/payment/account-linking/agreement'
+  location.href = url;
+}
+
+function jumpSPLive(){
+    const url = 'https://shopeepay.com.my/u/checkout_my?type=start&mid=10100249&target_app=shopeepay&_apprl_=%2Frn%2F%40shopee-rn%2Fshopeepay%2FTRANSFER_PAYMENT_SELECTION_CSCANB%3F__anim__%3D2%26entryRefer%3DJumpApp%26mid%3D10100249%26order_key%3DjyEetu1YFdgpUWv43xcHn1DOUdMfzgzSFPTbSIkmiAZG0hcXbdTOFYaeTaqnrUc5vrfjazh-pRXPbw%26order_sn%3D128558704586991784%26referrer%3Dexternal%26return_url%3DaHR0cHM6Ly9iYWlkdS5jb20%252FYW1vdW50PTExMDAwJmNsaWVudF9pZD1MQV9TWl9URVNUX01lcmNoYW50X0hvc3QmcmVmZXJlbmNlX2lkPU5ld1N5c3RlbV9JRF9KdW1wQXBwMDAxMzM5JnJlc3VsdF9jb2RlPTIwMyZzaWduYXR1cmU9QmdJYUxBbnp4RE5lT2xWanZtT0ZNTVZYVGZZbTZxRU45RXhyV1Q2aWx6OCUzRA%253D%253D%26source%3Dweb%26token%3Dxd5j5mmv1mkjcfgpqqr2g&medium_index=xd5j5mmv1mkjcfgpqqr2g&order_key=jyEetu1YFdgpUWv43xcHn1DOUdMfzgzSFPTbSIkmiAZG0hcXbdTOFYaeTaqnrUc5vrfjazh-pRXPbw&order_sn=128558704586991784&return_url=aHR0cHM6Ly9iYWlkdS5jb20%2FYW1vdW50PTExMDAwJmNsaWVudF9pZD1MQV9TWl9URVNUX01lcmNoYW50X0hvc3QmcmVmZXJlbmNlX2lkPU5ld1N5c3RlbV9JRF9KdW1wQXBwMDAxMzM5JnJlc3VsdF9jb2RlPTIwMyZzaWduYXR1cmU9QmdJYUxBbnp4RE5lT2xWanZtT0ZNTVZYVGZZbTZxRU45RXhyV1Q2aWx6OCUzRA%3D%3D&source=web&target=2&token=xd5j5mmv1mkjcfgpqqr2g'
+  location.href = url;
+}
+
+function jumpSPLive_UL(){
+    const url = 'https://shopee.com.my/payment/account-linking/agreement'
+  location.href = url;
+}
+
+// 新增的智能跳转函数
+function jump3() {
+  const inputText = document.getElementById('customUrl').value.trim();
+  
+  if (!inputText) {
+    alert('请输入内容');
+    return;
+  }
+  
+  // 判断是否为URL
+  if (isValidURL(inputText)) {
+    // 如果是有效的URL，直接跳转
+    location.href = inputText;
+  } else {
+    // 如果不是URL，使用geneJumpLink函数处理
+    const processedUrl = geneJumpLink(inputText);
+    if (processedUrl) {
+      location.href = processedUrl;
+    } else {
+      alert('无法处理该输入内容');
+    }
+  }
+}
+
+// URL验证函数[5,6](@ref)
+function isValidURL(text) {
+  try {
+    // 使用URL构造函数验证[6](@ref)
+    new URL(text);
+    return true;
+  } catch (_) {
+    // 如果URL构造函数失败，尝试正则表达式验证
+    return text.includes('://');
+  }
+}
+</script>
+
+</body>
+</html>
